@@ -660,8 +660,8 @@
             "format": "number"
           },
           "password": {
-            "type": "number",
-            "format": "number"
+            "type": "string",
+            "format": "string"
           },
           "role": {
             "type": "string",
