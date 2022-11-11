@@ -1,0 +1,418 @@
+{
+	"info": {
+		"_postman_id": "9f84ec2a-42fd-456f-b1fa-5932eb7459f6",
+		"name": "Hospital app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22872935"
+	},
+	"item": [
+		{
+			"name": "register user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"dr\",\n    \"contact_number\": 1235467,\n    \"password\":\"test\",\n    \"role\":\"doctor\",\n    \"address\":\"abc\",\n    \"city\":\"abc\",\n    \"country\":\"abc\",\n    \"specialty\":\"Dermatologists\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/hospital-management/register_user",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"hospital-management",
+						"register_user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"contact_number\": 12234346456,\n   \"password\":\"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/hospital-management/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"hospital-management",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Doctors available  slots",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjgxNTI4NTIsInVzZXJfaWQiOiJkb2N0b3JfUEc0UjVOMzUiLCJyb2xlIjoiZG9jdG9yIn0.FaZzH2utVrE-VwhGPfK60dEwNpIfiYeM7na7aWmsPOc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/hospital-management/doctors/WW88FARW/11-11-2022/slots",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"hospital-management",
+						"doctors",
+						"WW88FARW",
+						"11-11-2022",
+						"slots"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "book appointment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjgwMjY2NDAsInVzZXJfaWQiOiJFMjJYQTc2WiIsInJvbGUiOiJwYXRpZW50In0.Y0gMRtHLckbO_lfY1QV1mCqrr0UfHJY_XSrQHOr__CU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/hospital-management/book_appointment/FXYPHWU/2345678/5678",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"hospital-management",
+						"book_appointment",
+						"FXYPHWU",
+						"2345678",
+						"5678"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View patient appointment history",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjgxNTM5NjMsInVzZXJfaWQiOiJwYXRpZW50X1UyMjUzRURFIiwicm9sZSI6InBhdGllbnQifQ.j7GC2WK4SxARyFHOeskJKwmhtf_oBDiKxPtHySBnycg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/hospital-management/get_appointment_history/patient_U2253EDE",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"hospital-management",
+						"get_appointment_history",
+						"patient_U2253EDE"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjgwMjgxNDQsInVzZXJfaWQiOiJFMjJYQTc2WiIsInJvbGUiOiJwYXRpZW50In0.-6FNl1eSYwpQN7bvZDuIJO_z_7oDNGd897tUWyBdtY4",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cancel appointment",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjgxNTI5MjEsInVzZXJfaWQiOiJwYXRpZW50X1UyMjUzRURFIiwicm9sZSI6InBhdGllbnQifQ.l_efMn198RzdAsZUBs1oMwliGxXfU0KSpTRMK6UDBq4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/hospital-management/cancel_appointment/doctor_NVU9ZA8Z/patient_U2253EDE/11-11-2022",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"hospital-management",
+						"cancel_appointment",
+						"doctor_NVU9ZA8Z",
+						"patient_U2253EDE",
+						"11-11-2022"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjgwMjk5NzcsInVzZXJfaWQiOiJXVzg4RkFSVyIsInJvbGUiOiJkb2N0b3IifQ.F-hsJgKAdZiDrEqqxrntTil8Z_RonUD9ryUDr0fupdw",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view doctors who have 6+ hours total appointments in a day",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjgxNTQzODgsInVzZXJfaWQiOiJhZG1pbl9YWjhOVUhHUyIsInJvbGUiOiJhZG1pbiJ9.U0Da8J47AYM7_ZCSIn-OGxqnvhDK06Qodjq44e9YsnY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/hospital-management/get_doctors_exceeding_6_hours/12-11-2022",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"hospital-management",
+						"get_doctors_exceeding_6_hours",
+						"12-11-2022"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view doctors with the most appointments in a given day",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjgxNTQzODgsInVzZXJfaWQiOiJhZG1pbl9YWjhOVUhHUyIsInJvbGUiOiJhZG1pbiJ9.U0Da8J47AYM7_ZCSIn-OGxqnvhDK06Qodjq44e9YsnY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/hospital-management/get_doctor_with_most_appointments/11-11-2022",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"hospital-management",
+						"get_doctor_with_most_appointments",
+						"11-11-2022"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View availability of all Doctors",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjgxNTI5MjEsInVzZXJfaWQiOiJwYXRpZW50X1UyMjUzRURFIiwicm9sZSI6InBhdGllbnQifQ.l_efMn198RzdAsZUBs1oMwliGxXfU0KSpTRMK6UDBq4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/hospital-management/get_availability/11-11-2022",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"hospital-management",
+						"get_availability",
+						"11-11-2022"
+					],
+					"query": [
+						{
+							"key": "doctor_id",
+							"value": "d1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View list of doctors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/hospital-management/doctors",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"hospital-management",
+						"doctors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Doctor information",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/hospital-management/doctors/doctor_NVU9ZA8Z",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"hospital-management",
+						"doctors",
+						"doctor_NVU9ZA8Z"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view appointment details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjgxNTM5NjMsInVzZXJfaWQiOiJwYXRpZW50X1UyMjUzRURFIiwicm9sZSI6InBhdGllbnQifQ.j7GC2WK4SxARyFHOeskJKwmhtf_oBDiKxPtHySBnycg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/hospital-management/view_appoinement/S6WJ",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"hospital-management",
+						"view_appoinement",
+						"S6WJ"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list appointments",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjgxNTM5NjMsInVzZXJfaWQiOiJwYXRpZW50X1UyMjUzRURFIiwicm9sZSI6InBhdGllbnQifQ.j7GC2WK4SxARyFHOeskJKwmhtf_oBDiKxPtHySBnycg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/hospital-management/appoinements/11-11-2022",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"hospital-management",
+						"appoinements",
+						"11-11-2022"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
