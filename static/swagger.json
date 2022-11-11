@@ -1,0 +1,129 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Tech Unicorn"
+  },
+  "servers": [
+    {
+      "url": "/hospital-management"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Hospital slot booking",
+      "description": "APIs for managing slot booking"
+    }
+  ],
+  "paths": {
+    "/register_user": {
+      "post": {
+        "tags": [
+          "Register user"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/registerUserPostBody"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Bad data."
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": [
+          "User login"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/loginBody"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Bad data."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "registerUserPostBody": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "string"
+          },
+          "contact_number": {
+            "type": "number",
+            "format": "number"
+          },
+          "password": {
+            "type": "number",
+            "format": "number"
+          },
+          "role": {
+            "type": "string",
+            "format": "string"
+          },
+          "address": {
+            "type": "string",
+            "format": "string"
+          },
+          "city": {
+            "type": "string",
+            "format": "string"
+          },
+          "country": {
+            "type": "string",
+            "format": "string"
+          },
+          "specialty": {
+            "type": "string",
+            "format": "string"
+          }
+        }
+      },
+      "loginBody": {
+        "type": "object",
+        "properties": {
+          "contact_number": {
+            "type": "number",
+            "format": "number"
+          },
+          "password": {
+            "type": "string",
+            "format": "password"
+          }
+        }
+      }
+    }
+  }
+}
