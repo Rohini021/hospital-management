@@ -97,7 +97,7 @@ def list_doctors():
 
 def get_doctor_details(doctor_id):
     try:
-        print("list all doctors")
+        print("get doctor details")
         data = auth_data_collection.find_one({"user_id":doctor_id}, {"_id":0, "password":0})
         return data, 200
     except Exception as exc:
@@ -138,6 +138,7 @@ def list_appoinements(date):
     except Exception as exc:
         print("exception occured: ", str(exc))
         return "exception occured: "+ str(exc), 400
+
 def view_appoinement(appointment_id, request_headers):
     try:
         print("get appointment details for id: ", appointment_id)
@@ -145,7 +146,6 @@ def view_appoinement(appointment_id, request_headers):
         logged_in_user = data["user_id"]
         role = data["role"]
         apt_data = appointments_collection.find_one({"appointment_id":appointment_id}, {"_id":0})
-        print("1111", apt_data)
         #the patient who booked the appointment can see the appointment details
         if role == "patient" and logged_in_user != apt_data["patient_id"]:
             return "patient who booked the appointment can see the appointment details", 400
@@ -239,10 +239,9 @@ def get_doctors_exceeding_6_hours(date, request_headers):
         if role != "admin":
             return "Only admin can check list of doctors exceeding 6 hours of appointment", 400
         # view doctors who have 6+ hours (360 minutes) total appointments in a day
-        data_cur = doctor_appointment_summary_collection.find({"total_time_for_day":{"$gte":360},"date":date})
+        data_cur = doctor_appointment_summary_collection.find({"total_time_for_day":{"$gte":360},"date":date},{"_id":0})
         doctors_data = []
         for data in data_cur:
-            data['_id'] = str(data['_id'])
             doctors_data.append(data)
         print(doctors_data)
         return doctors_data, 200

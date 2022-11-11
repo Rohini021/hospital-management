@@ -18,8 +18,9 @@
     "/register_user": {
       "post": {
         "tags": [
-          "Register user"
+          "Hospital slot booking"
         ],
+        "summary": "Register user",
         "requestBody": {
           "required": true,
           "content": {
@@ -46,8 +47,9 @@
     "/login": {
       "post": {
         "tags": [
-          "User login"
+          "Hospital slot booking"
         ],
+        "summary": "User login",
         "requestBody": {
           "required": true,
           "content": {
@@ -58,6 +60,578 @@
             }
           }
         },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Bad data."
+          }
+        }
+      }
+    },
+    "/doctors/{doctor_id}/{date}/slots": {
+      "parameters": [
+        {
+          "name": "doctor_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "token",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "get": {
+        "parameters": [
+          {
+            "name": "doctor_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "schema": {
+                "properties": {
+                  "doctor_id": {
+                    "type": "string"
+                  }
+                }
+            }
+          },
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "properties": {
+                "date": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Hospital slot booking"
+        ],
+        "summary": "View Doctors available  slots",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Bad data."
+          }
+        }
+      }
+    },
+    "/book_appointment/{doctor_id}/{date}": {
+      "parameters": [
+        {
+          "name": "doctor_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "token",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "parameters": [
+          {
+            "name": "doctor_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "schema": {
+                "properties": {
+                  "doctor_id": {
+                    "type": "string"
+                  }
+                }
+            }
+          },
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "properties": {
+                "date": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Hospital slot booking"
+        ],
+        "summary":"book appointment",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/bookAppointmentBody"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Bad data."
+          }
+        }
+      }
+    },
+    "/get_appointment_history/{patient_id}": {
+      "parameters": [
+        {
+          "name": "patient_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "token",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "get": {
+        "parameters": [
+          {
+            "name": "patient_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "schema": {
+                "properties": {
+                  "doctor_id": {
+                    "type": "string"
+                  }
+                }
+            }
+          }
+        ],
+        "tags": [
+          "Hospital slot booking"
+        ],
+        "summary": "View patient appointment history",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Bad data."
+          }
+        }
+      }
+    },
+    "/cancel_appointment/{doctor_id}/{patient_id}/{date}": {
+      "parameters": [
+        {
+          "name": "doctor_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "patient_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "token",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "delete": {
+        "parameters": [
+          {
+            "name": "doctor_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "schema": {
+                "properties": {
+                  "doctor_id": {
+                    "type": "string"
+                  }
+                }
+            }
+          },
+          {
+            "name": "patient_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "schema": {
+                "properties": {
+                  "doctor_id": {
+                    "type": "string"
+                  }
+                }
+            }},
+            {
+              "name": "date",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "schema": {
+                  "properties": {
+                    "doctor_id": {
+                      "type": "string"
+                    }
+                  }
+              }}
+        ],
+        "tags": [
+          "Hospital slot booking"
+        ],
+        "summary": "cancel appointment",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Bad data."
+          }
+        }
+      }
+    },
+    "/get_doctors_exceeding_6_hours/{date}": {
+      "parameters": [
+        {
+          "name": "date",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "token",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "get": {
+        "parameters": [
+            {
+              "name": "date",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "schema": {
+                  "properties": {
+                    "doctor_id": {
+                      "type": "string"
+                    }
+                  }
+              }}
+        ],
+        "tags": [
+          "Hospital slot booking"
+        ],
+        "summary":  "view doctors who have 6+ hours total appointments in a day",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Bad data."
+          }
+        }
+      }
+    },
+    "/get_doctor_with_most_appointments/{date}": {
+      "parameters": [
+        {
+          "name": "date",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "token",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "get": {
+        "parameters": [
+            {
+              "name": "date",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "schema": {
+                  "properties": {
+                    "doctor_id": {
+                      "type": "string"
+                    }
+                  }
+              }}
+        ],
+        "tags": [
+          "Hospital slot booking"
+        ],
+        "summary":  "view doctors with the most appointments in a given day",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Bad data."
+          }
+        }
+      }
+    },
+    "/get_availability/{date}": {
+      "parameters": [
+        {
+          "name": "date",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "token",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "get": {
+        "parameters": [
+            {
+              "name": "date",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "schema": {
+                  "properties": {
+                    "doctor_id": {
+                      "type": "string"
+                    }
+                  }
+              }}
+        ],
+        "tags": [
+          "Hospital slot booking"
+        ],
+        "summary": "View availability of all Doctors",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Bad data."
+          }
+        }
+      }
+    },
+    "/doctors": {
+      "get": {
+        "tags": [
+          "Hospital slot booking"
+        ],
+        "summary":"View list of doctors",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Bad data."
+          }
+        }
+      }
+    },
+    "/doctors/{doctor_id}": {
+      "parameters": [
+        {
+          "name": "doctor_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Hospital slot booking"
+        ],
+        "summary": "View list of doctors",
+        "parameters": [
+          {
+            "name": "doctor_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "schema": {
+                "properties": {
+                  "doctor_id": {
+                    "type": "string"
+                  }
+                }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Bad data."
+          }
+        }
+      }
+    },
+    "/appoinements/{date}": {
+      "parameters": [
+        {
+          "name": "date",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "token",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "get": {
+        "parameters": [
+            {
+              "name": "date",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "schema": {
+                  "properties": {
+                    "doctor_id": {
+                      "type": "string"
+                    }
+                  }
+              }}
+        ],
+        "tags": [
+          "Hospital slot booking"
+        ],
+        "summary":"list appointments",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Bad data."
+          }
+        }
+      }
+    },
+    "/view_appoinement/{appointment_id}": {
+      "parameters": [
+        {
+          "name": "appointment_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "token",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "get": {
+        "parameters": [
+            {
+              "name": "appointment_id",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "schema": {
+                  "properties": {
+                    "doctor_id": {
+                      "type": "string"
+                    }
+                  }
+              }}
+        ],
+        "tags": [
+          "Hospital slot booking"
+        ],
+        "summary": "list appointments",
         "produces": [
           "application/json"
         ],
@@ -121,6 +695,17 @@
           "password": {
             "type": "string",
             "format": "password"
+          }
+        }
+      },
+      "bookAppointmentBody": {
+        "type": "object",
+        "properties": {
+          "slots": {
+            "type": "array",
+            "items": {
+              "type":"string"
+            }
           }
         }
       }
