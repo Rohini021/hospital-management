@@ -8,13 +8,15 @@ Simple flask APIs to manage slot bookings for hospital
 
 - create virtual env:
 ```bash
-python3 -m venv /<venv>
-source <venv>/bin/activate
+python3 -m venv /<path>/<venv_name>
+cd /<path>
+source <venv_name>/bin/activate
 ```
 
 - clone the repository:
 ```bash
 git clone https://github.com/Rohini021/hospital-management.git
+cd hospital-management
 ```
 - install requirement file:
 ```bash
