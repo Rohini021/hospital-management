@@ -26,7 +26,12 @@ pip3 install -r requirements.txt
 ```bash
 FLASK_APP=app.py flask run
 ```
-- Use provided postman collection (hospital_management_postman_collection.json) or use swagger:
+- Use provided postman collection 
+```bash
+https://github.com/Rohini021/hospital-management/blob/main/hospital_management_postman_collection.json
+```
+
+or use swagger:
 ```bash
 http://127.0.0.1:5000/swagger
 ```
